@@ -13,4 +13,4 @@ if __name__ == '__main__':
     pytest.main(["-s", "-q", "testcase/test_fixture.py", "--alluredir", allureDir])
     # 将测试报告转为html格式
     os.system("allure generate %s -o %s --clean" % (allureDir, allureDir + r'\html'))
-    os.system("allure open -h 127.0.0.1 -p 8883 %s" % (allureDir + r'\html'))
+    # os.system("allure open -h 127.0.0.1 -p 8883 %s" % (allureDir + r'\html'))
