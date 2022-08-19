@@ -1,8 +1,10 @@
-import pytest
 import os
+import sys
 import logging
 import common.base
+import pytest
 
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))  # D:\pycharm\20220412\webuitest
 
 if __name__ == '__main__':
     allureDir = common.base.createDir(r"report\allure-report")

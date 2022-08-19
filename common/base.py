@@ -47,19 +47,26 @@ def randomString(num):
 '''获取当前项目路径'''
 
 
-def pwd():
-    # print(os.getcwd())  #D:\pycharm\20220412\webuitest\common
-    # print(os.path.abspath("."))  #D:\pycharm\20220412\webuitest\common   当前路径
-    # print(os.path.abspath("..")) #D:\pycharm\20220412\webuitest   当前路径的上一层
-    return os.path.abspath("..")
+
+def get_project_rootpath():
+    """
+    获取项目根目录。此函数的能力体现在，不论当前module被import到任何位置，都可以正确获取项目根目录
+    :return:
+    """
+    path = os.path.realpath(os.curdir)
+    while True:
+        # PyCharm项目中，'.idea'是必然存在的，且名称唯一
+        if '.idea' in os.listdir(path):
+            return path
+        path = os.path.dirname(path)
 
 
 '''创建文件夹'''
 
 
 def createDir(path):
-    return pwd() + '\\' + path + '\\' + localTime()
+    return get_project_rootpath() + '\\' + path + '\\' + localTime()
 
 
 if __name__ == '__main__':
-    print(createDir(r"report\allure-report"))
+    print(get_project_rootpath())
